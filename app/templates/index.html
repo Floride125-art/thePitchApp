@@ -1,0 +1,58 @@
+
+{% extends 'base.html' %} {% import 'macros.html' as macro %} {% block content %}
+<div class ="text" >
+<h1 style="color:rgb(49, 4, 29);text-align:center;">A worm Welcome to create your Pitch</h1>
+
+
+<ul style = "text-align: left ; font-size :24px">
+  <li>
+    <a class="nav-link" data-toggle="tab" href="#Products" role="tab">Pitch on Products</a>
+  </li>
+  <li >
+    <a class="nav-link" data-toggle="tab" href="#Pickups" role="tab">Pitch on Pickup Lines</a>
+  </li>
+  <li >
+    <a class="nav-link" data-toggle="tab" href="#Interviews" role="tab">Pitch on Interviews</a>
+  </li>
+  <li >
+    <a class="nav-link" data-toggle="tab" href="#Promotions" role="tab">Pitch on Promotions</a>
+  </li>
+</ul>
+
+<a href="{{url_for('main.new_pitch')}}" style = "margin-left: 20.25%; color: rgb(4, 19, 2);font-size: 16px">
+  <span >Create new Pitch<span>
+</a>
+</div>
+
+<div class="tab-content" style="color:rgb(17, 16, 16)">
+  <div style="margin-top: 1em;" class="tab-pane" id="Products" role="tabpanel">
+    <div class="container-fluid" style="margin: 0% 2%">
+      <div class="row">
+        {{macro.displayPitchList(product_pitch)}}
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 1em;" class="tab-pane" id="Pickups" role="tabpanel">
+    <div class="container-fluid" style="margin: 0% 2%">
+      <div class="row">
+        {{macro.displayPitchList(pickup_lines)}}
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 1em;" class="tab-pane" id="Interviews" role="tabpanel">
+    <div class="container-fluid" style="margin: 0% 2%">
+      <div class="row">
+        {{macro.displayPitchList(interview_pitch)}}
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 1em;" class="tab-pane" id="Promotions" role="tabpanel">
+    <div class="container-fluid" style="margin: 0% 2%">
+      <div class="row">
+        {{macro.displayPitchList(promotion_pitch)}}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}
+
