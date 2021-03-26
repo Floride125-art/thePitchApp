@@ -1,0 +1,3 @@
+Hey {{user.username}}
+A Worm Welcome to the PicthApp
+As you have signed in our system, we would like to invite to explore so many pitches shared by other people
