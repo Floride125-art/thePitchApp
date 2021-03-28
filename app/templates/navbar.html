@@ -1,33 +1,35 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="/">fofoPitch</a>
+<nav class="mb-1 navbar bg-info navbar-expand-lg navbar-dark ">
+    <a class="navbar-brand" href="{{url_for('main.index')}}"><strong>PitchApp</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+        aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('main.index')}}">Pitches</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('main.new_pitch')}}">Create New Pitch</a>
+            </li>
+            {% endif %}
+        </ul>
+        <ul class="navbar-nav ml-auto">
 
-  <ul class="nav navbar-nav navbar-right">
-      {% if current_user.is_authenticated and current_user.profile_pic_path is none %}
-      <!-- <span class="nav-item" style="height: 42.97px; width: 50.97px;"><a href="{{url_for('main.profile',uname=current_user.username)}}"><img src="{{url_for('static', filename = 'imgs/avatar.png')}}" alt="" style="height: 42.97px; width: 42.97px; border-radius: 50%; border-right: 2.5px solid white; border-bottom: 2.5px solid white"></a></span>  -->
-      <li class="nav-item">
-              <a class="nav-link" href="{{url_for('main.profile',uname=current_user.username)}}">{{current_user.username}}</a>
-          </li>        
-          <li class="nav-item">
-              <a class="nav-link" href="{{url_for('auth.logout')}}">Signout</a>
-          </li>  
+            {% if current_user.is_authenticated %}
 
-      {% elif current_user.is_authenticated and current_user.profile_pic_path %}
-      <span class="nav-item" style="height: 42.97px; width: 50.97px;"><a href="{{url_for('main.profile',uname=current_user.username)}}"><img src="{{url_for('static', filename = current_user.profile_pic_path)}}" alt="" style="height: 42.97px; width: 42.97px; border-radius: 50%; border-right: 2.5px solid white; border-bottom: 2.5px solid white"></a></span>
-      <li class="nav-item">
-          <a class="nav-link" href="{{url_for('main.profile',uname=current_user.username)}}">{{current_user.username}}</a>
-      </li>        
-      <li class="nav-item">
-          <a class="nav-link" href="{{url_for('auth.logout')}}">Signout</a>
-      </li>      
+            <li class="nav-item mr-3"><a class="nav-link"><strong> {{current_user.username}}</strong> </a></li>
+            <li class="nav-item mr-3"><a class="nav-link" href="{{url_for('main.profile',name=current_user.username)}}"><strong>My Account</strong></a></li>
+            <li class="nav-item mr-3"><a class="nav-link" href="{{url_for('auth.logout')}}"><strong>LogOut</strong></a></li>
+            
+            {% else %}
+            
+            <li class="nav-item mr-3"><a class="nav-link" href="{{url_for('auth.login')}}"><strong>LogIn</strong></a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('auth.signup')}}"><strong>SignUp</strong></a></li>
+           
+            {%endif%}
 
-      {% else %}
-      <li class="nav-item">
-          <a class="nav-link" href="{{url_for('auth.login')}}">Signin</a>
-      </li>
-      {% endif %}
-  </ul>
+        </ul>
+    </div>
 </nav>

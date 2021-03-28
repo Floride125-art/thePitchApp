@@ -1,41 +1,75 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="container">
-<div class="row">
-<!-- displaying  Username-->
-  <div class="col-md-4">
-    <h3> {{user.username| capitalize}} </h3>
+<div class="container m-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card bg-info">
+        <div class="card-img">
+          {% if user.profile_pic_path %}
+          <img src="{{url_for('static',filename=user.profile_pic_path)}}" style="border-radius: 50%; height:200px;"
+            class="card-img">
+          {%else%}
+          <p>No profile</p>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <h5 class="text-center text-light"> {{user.username| capitalize}}</h5>
+          <hr>
+          {% if user.bio %}
+          <p class="text-light">{{user.bio}}</p>
+          {%else%}
+          <p> No bio </p>
+          {% endif %}
+          {% if user == current_user %}
 
-    <!--Displaying user bio-->
-    {% if user.bio %}
-      <p> {{user.bio}}</p>
-    {%else%}
-      <p> {{user.username| capitalize}} joined Pitches </p>
-    {% endif %}
-    {% if user == current_user %}
-    <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
-    {% endif %}
+          <div>
+            <a class="mb-4 btn btn-sm btn-light" href="{{url_for('main.updateprofile',name=user.username)}}">Add Bio</a>
+          </div>
+          <div>
+            <form action="{{url_for('main.update_profile',name=user.username)}}" method="post"
+              enctype="multipart/form-data">
+              <input type="file" name="photo" class="form-control" required>
+              <input type="submit" class="btn btn-sm btn-light">
+            </form>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      {% if current_user %}
+      <h3 class="text-center text-uppercase m-4"><strong>my pitches</strong></h3>
+      <div class="row">
+        {% for category in pitch %}
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{category.title}}</h5>
+              <p class="card-text">{{category.pitch}}</p>
+              <p class="card-text text-muted">__{{category.user.username}}</p>
+              <div>
+                <span class="mr-2"><i class="fa fa-comment"></i>{{category.comment.count()}}</span>
+                <span class="mr-2"><a href="{{url_for('main.like',id = category.id)}}"><i class="fa fa-thumbs-up"
+                      style="color: black;"></i></a>{{category.upvote.count()}}</span>
+                <span><a href="{{url_for('main.dislike',id = category.id)}}"> <i class="fa fa-thumbs-down"
+                      style="color: black;"></i></a>{{category.downvote.count()}}</span>
+              </div>
+              <a href="{{url_for('main.comment',pitch_id = category.id)}}" class="btn btn-info">Comment</a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+        <p class="card-title">No Pitch Yet!</p>
+        {% endif %}
+      </div>
+
+
+
+    </div>
   </div>
-
-  <!--Display profile photo-->
-  <div class="col-md-4">
-
-    {% if user.profile_pic_path %}
-    <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
-    {%else%}
-    <p>No profile picture</p>
-    {% endif %}
-
-    {% if user == current_user %}
-    <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
-
-      <input type="file"  name="photo" class="form-control" required>
-      <input type="submit">
-    </form>
-    <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
-      {% endif %}
-  </div>
-</div>
 </div>
 {% endblock %}

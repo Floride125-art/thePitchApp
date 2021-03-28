@@ -1,47 +1,38 @@
-# Pitches Application
-Author Mukankurunziza Opportunee
-## Description
-In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful?The task is to create an application that allows users to use that one minute wisely
+# thePitchApp
+an application that allows users to use that one minute wisely. The users will submit their one minute pitches and other users will vote on them and leave comments to give their feedback on them.  
 
-## BDD
-With the application, a user will be able to:
+## Author
+Floride Tuyisenge
 
-## BEHAVIOR
-As a user, I would like to see the pitches other people have posted.
-As a user, I would like to vote on the pitch they liked and give it a downvote or upvote.
-As a user, I would like to be signed in for me to leave a comment
-As a user, I would like to receive a welcoming email once I sign up.
-As a user, I would like to view the pitches I have created in my profile page.
-As a user, I would like to comment on the different pitches and leave feedback.
-As a user, I would like to submit a pitch in any category.
-As a user, I would like to view the different categories.
-category
-## INPUTS
-Display pitches
-Click on the upvote or downvote
-Click on sign up
-Sign in
-Textfield area
-Edit the bio
-## OUTPUTS
-pitches other people have posted.
-downvote or upvote.
-leave a comment
-receive a welcoming email once I sign up
-comment on the different pitches and leave feedback
-submit a pitch in any category
-view the different categories.
 ## Technologies Used
-Python v3.6
- Boostrap Flask 
- CSS and HTML
-## link https://pitcheoppo.herokuapp.com/
-## SetUp / Installation Requirements
-Prerequisites python3.6 Good internet connection For windows users: GitBash For linux/ubuntu users : Git Setting up Flask
-## Support and Contact details
-Fell free to contact me on : nshutioppo1987@gmail.com tel:+250785073251
+ * HTML
+ * Python
+ * CSS
+ * Flask
+ * Flask-script
+ * Flask-bootstrap
+ 
+## contact details
+Email:flo.tuyisenge@gmail.com
+Phone:+250780674917
 
-whatsapp : +250785073251
+### License
 
-## License MIT License
-Copyright (c) 2019 mukankurunziza opportunee
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+Copyright (c) 2020 PitchApp
